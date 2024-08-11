@@ -1,3 +1,4 @@
+
 services:
   proxy:
     image: nginx:latest
@@ -5,10 +6,12 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./index.html:/usr/share/nginx/html/index.html
     depends_on:
-      - 
-  appMips:
-    image: nginx:latest
-    volumes:
-      - 
+      - app1
+      - app2
+
+  app1:
+    build: ./app1
+    ports:
+      - "8000:8000"
+
